@@ -28,3 +28,24 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 packages = [{ include = "event_managment_api" }]
 
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "event_managment_api.settings"
+python_files = ["test_*.py"]
+
+[tool.coverage.run]
+source = ["events"]
+branch = true
+omit = ["*/migrations/*", "*/tests/*", "*/admin.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __str__",
+    "if self\\.debug",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
+show_missing = true
+skip_covered = true
+
