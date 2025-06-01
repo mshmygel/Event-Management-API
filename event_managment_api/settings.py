@@ -89,16 +89,22 @@ WSGI_APPLICATION = "event_managment_api.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+DB_NAME = os.getenv("POSTGRES_DB", "event_db")
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("POSTGRES_DB"),
-        "USER": os.getenv("POSTGRES_USER"),
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-        "HOST": os.getenv("POSTGRES_HOST"),
+        "NAME": DB_NAME,
+        "USER": os.getenv("POSTGRES_USER", "event_user"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD", "event_password"),
+        "HOST": os.getenv("POSTGRES_HOST", "localhost"),
         "PORT": os.getenv("POSTGRES_PORT", 5432),
+        "TEST": {
+            "NAME": f"test_{DB_NAME}"
+        }
     }
 }
+
 
 
 # Password validation
