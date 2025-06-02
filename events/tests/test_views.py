@@ -12,7 +12,7 @@ def get_jwt_token(client, username="testuser", password="testpass"):
     response = client.post(
         reverse("token_obtain_pair"),  # or hardcoded: "/api/token/"
         {"username": username, "password": password},
-        format="json"
+        format="json",
     )
     return response.data["access"]
 

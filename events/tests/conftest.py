@@ -8,9 +8,7 @@ from django.utils import timezone
 @pytest.fixture
 def user(db):
     return User.objects.create_user(
-        username="testuser",
-        password="testpass",
-        email="test@example.com"
+        username="testuser", password="testpass", email="test@example.com"
     )
 
 
@@ -21,5 +19,5 @@ def event(user):
         description="Description",
         date=timezone.now() + timedelta(days=1),
         location="Kyiv",
-        organizer=user
+        organizer=user,
     )

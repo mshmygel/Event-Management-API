@@ -1,4 +1,4 @@
-.PHONY: up build migrate createsuperuser down logs shell restart
+.PHONY: up build migrate makemigrations createsuperuser down logs shell restart
 
 up:
 	docker-compose up -d
@@ -8,6 +8,9 @@ build:
 
 migrate:
 	docker-compose exec web python manage.py migrate
+
+makemigrations:
+	docker-compose exec web python manage.py makemigrations
 
 createsuperuser:
 	docker-compose exec web python manage.py createsuperuser

@@ -11,6 +11,7 @@ class EventAdmin(admin.ModelAdmin):
     Provides search functionality by title and location.
     Enables filtering by event date.
     """
+
     list_display = ("title", "date", "location", "organizer")
     search_fields = ("title", "location")
     list_filter = ("date",)
@@ -24,5 +25,6 @@ class EventRegistrationAdmin(admin.ModelAdmin):
     Displays a list view with the related event, user, and registration time.
     Enables filtering by registration date.
     """
+
     list_display = ("event", "user", "registered_at")
     list_filter = ("registered_at",)
