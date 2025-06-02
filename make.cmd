@@ -9,8 +9,6 @@ if "%1" == "up" (
     docker-compose exec web python manage.py migrate
 ) else if "%1" == "makemigrations" (
     docker-compose exec web python manage.py makemigrations
-) else if "%1" == "makemigrations-names" (
-    docker-compose exec web python manage.py makemigrations names
 ) else if "%1" == "createsuperuser" (
     docker-compose exec web python manage.py createsuperuser
 ) else if "%1" == "down" (
@@ -22,7 +20,7 @@ if "%1" == "up" (
 ) else if "%1" == "restart" (
     docker-compose down && docker-compose up -d
 ) else (
-    echo Available commands: up, build, migrate, makemigrations, makemigrations-names, createsuperuser, down, logs, shell, restart
+    echo Available commands: up, build, migrate, makemigrations, createsuperuser, down, logs, shell, restart
 )
 
 endlocal

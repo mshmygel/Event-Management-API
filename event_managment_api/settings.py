@@ -47,10 +47,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "events",
     # "accounts",
-
     "rest_framework",
     # "debug_toolbar",
     "drf_spectacular",
@@ -99,12 +97,9 @@ DATABASES = {
         "PASSWORD": os.getenv("POSTGRES_PASSWORD", "event_password"),
         "HOST": os.getenv("POSTGRES_HOST", "localhost"),
         "PORT": os.getenv("POSTGRES_PORT", 5432),
-        "TEST": {
-            "NAME": f"test_{DB_NAME}"
-        }
+        "TEST": {"NAME": f"test_{DB_NAME}"},
     }
 }
-
 
 
 # Password validation
@@ -160,7 +155,6 @@ JAZZMIN_SETTINGS = {
         {"model": "auth.User"},
         {"model": "events.Event"},
     ],
-
     "show_sidebar": True,
     "navigation_expanded": True,
 }
@@ -171,9 +165,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
-    "DEFAULT_FILTER_BACKENDS": [
-        "django_filters.rest_framework.DjangoFilterBackend"
-    ],
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }
 
 
@@ -183,12 +175,12 @@ SPECTACULAR_SETTINGS = {
 }
 
 
-EMAIL_BACKEND = os.getenv("EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend")
+EMAIL_BACKEND = os.getenv(
+    "EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend"
+)
 EMAIL_HOST = os.getenv("EMAIL_HOST", "localhost")
 EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "True") == "True"
 DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "noreply@example.com")
-
-
